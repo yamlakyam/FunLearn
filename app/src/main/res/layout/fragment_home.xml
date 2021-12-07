@@ -56,23 +56,23 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView15">
 
                 <androidx.appcompat.widget.SearchView
-                    style="@style/CustomserachViewStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFFFFF"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/textView15"
-                    app:layout_constraintTop_toBottomOf="@+id/textView15" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView15"
+                    app:queryHint="Search Courses here"
+                    app:iconifiedByDefault="false"/>
 
             </com.google.android.material.card.MaterialCardView>
-
 
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="16dp"
                 app:cardBackgroundColor="#008890"
                 app:cardCornerRadius="12dp"
                 app:layout_constraintEnd_toStartOf="@+id/materialCardView2"
