@@ -4,15 +4,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/exploreFragment"
         android:icon="@drawable/explore"
         android:title="Explore" />
     <item
+        android:id="@+id/coursesFragment"
         android:icon="@drawable/play"
         android:title="My Course" />
     <item
+        android:id="@+id/wishListFragment"
         android:icon="@drawable/wishlist"
         android:title="WishList" />
     <item
+        android:id="@+id/accountFragment"
         android:icon="@drawable/user"
         android:title="Account" />
 </menu>
