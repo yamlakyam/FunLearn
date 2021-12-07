@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomserachViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay_search_bar_corners</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay_search_bar_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">200dp</item>
+        <item name="cornerSizeTopLeft">200dp</item>
+        <item name="cornerSizeBottomRight">20dp</item>
+        <item name="cornerSizeBottomLeft">20dp</item>
+    </style>
+</resources>
