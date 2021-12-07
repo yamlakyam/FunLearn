@@ -11,13 +11,14 @@
         android:layout_width="0dp"
         android:layout_height="200dp"
         app:cardBackgroundColor="#00a9b6"
-        app:cardCornerRadius="20dp"
         app:checkedIconTint="#00a9b8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/CustomCardViewStyle">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/CustomCardViewStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
