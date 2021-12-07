@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Pick your favorite topic"
+        android:textColor="#282627"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +48,7 @@
         android:layout_marginEnd="32dp"
         android:gravity="center"
         android:text="Choose your favorite topic to help us deliver the most suitable course for you"
-        android:textColor="#d8d8da"
+        android:textColor="#B8B1B0"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -206,6 +207,7 @@
         android:layout_marginEnd="24dp"
         android:text="Start your journey"
         android:textAllCaps="false"
+        android:textSize="16sp"
         app:backgroundTint="#00a9b6"
         app:cornerRadius="25dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -220,6 +222,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="You can still change your course later"
+        android:textColor="#B8B1B0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialButton" />
@@ -230,6 +233,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Art"
+        android:textColor="#B8B1B0"
         app:layout_constraintEnd_toEndOf="@+id/artCard"
         app:layout_constraintStart_toStartOf="@+id/artCard"
         app:layout_constraintTop_toBottomOf="@+id/artCard" />
@@ -240,6 +244,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Business"
+        android:textColor="#B8B1B0"
         app:layout_constraintEnd_toEndOf="@+id/businessCard"
         app:layout_constraintStart_toStartOf="@+id/businessCard"
         app:layout_constraintTop_toBottomOf="@+id/businessCard" />
@@ -250,6 +255,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Culinary"
+        android:textColor="#B8B1B0"
         app:layout_constraintEnd_toEndOf="@+id/culinaryCard"
         app:layout_constraintStart_toStartOf="@+id/culinaryCard"
         app:layout_constraintTop_toBottomOf="@+id/culinaryCard" />
@@ -260,6 +266,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="Coding"
+        android:textColor="#B8B1B0"
         app:layout_constraintEnd_toEndOf="@+id/codingCard"
         app:layout_constraintStart_toStartOf="@+id/codingCard"
         app:layout_constraintTop_toBottomOf="@+id/codingCard" />
@@ -270,6 +277,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Design"
+        android:textColor="#B8B1B0"
         app:layout_constraintEnd_toEndOf="@+id/designCard"
         app:layout_constraintStart_toStartOf="@+id/designCard"
         app:layout_constraintTop_toBottomOf="@+id/designCard" />
@@ -280,6 +288,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Gaming"
+        android:textColor="#B8B1B0"
         app:layout_constraintEnd_toEndOf="@+id/gamingCard"
         app:layout_constraintStart_toStartOf="@+id/gamingCard"
         app:layout_constraintTop_toBottomOf="@+id/gamingCard" />
@@ -290,6 +299,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Marketing"
+        android:textColor="#B8B1B0"
         app:layout_constraintEnd_toEndOf="@+id/marketingCard"
         app:layout_constraintStart_toStartOf="@+id/marketingCard"
         app:layout_constraintTop_toBottomOf="@+id/marketingCard" />
@@ -300,6 +310,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Music"
+        android:textColor="#B8B1B0"
         app:layout_constraintEnd_toEndOf="@+id/musicCard"
         app:layout_constraintStart_toStartOf="@+id/musicCard"
         app:layout_constraintTop_toBottomOf="@+id/musicCard" />
@@ -310,6 +321,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Sport"
+        android:textColor="#B8B1B0"
         app:layout_constraintEnd_toEndOf="@+id/sportCard"
         app:layout_constraintStart_toStartOf="@+id/sportCard"
         app:layout_constraintTop_toBottomOf="@+id/sportCard" />

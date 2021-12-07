@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FunLearn">
         <activity
-            android:name=".PickTopicActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".PickTopicActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
