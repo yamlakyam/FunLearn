@@ -107,6 +107,16 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/priceTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="$150"
+        android:textColor="#00a9b6"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>
 

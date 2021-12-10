@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.funlearn.Models.AllUdemyData;
 import com.example.funlearn.Models.CourseInfo;
 import com.example.funlearn.Retrofit.ApiInterface;
@@ -89,11 +90,15 @@ public class ExploreFragment extends Fragment {
 
             TextView courseTitleTxt = cardElementView.findViewById(R.id.courseTitleTxt);
             TextView instructorNameTxt = cardElementView.findViewById(R.id.instructorNameTxt);
+            TextView priceTxt = cardElementView.findViewById(R.id.priceTxt);
             TextView ratingTxt = cardElementView.findViewById(R.id.ratingTxt);
             ImageView courseImage = cardElementView.findViewById(R.id.courseImage);
             courseTitleTxt.setText(courseInfo.getTitle());
             instructorNameTxt.setText(courseInfo.getInstructorDetailArrayList().get(0).getName());
+            priceTxt.setText(courseInfo.getPrice());
 //            ratingTxt.setText(String.valueOf(courseInfo.));
+
+            Glide.with(getContext()).load(courseInfo.getImageLink()).into(courseImage);
 
 //            horizontalScrollView.addView(cardElementView);
             horizontalScrollLL.addView(cardElementView);
