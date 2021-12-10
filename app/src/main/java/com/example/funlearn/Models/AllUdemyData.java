@@ -44,6 +44,37 @@ public class AllUdemyData implements Parcelable {
         previous = in.readString();
     }
 
+    public int getCount() {
+        return count;
+    }
+
+    public String getNext() {
+        return next;
+    }
+
+    public String getPrevious() {
+        return previous;
+    }
+
+    public ArrayList<CourseInfo> getCourseInfoArrayList() {
+        return courseInfoArrayList;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public void setNext(String next) {
+        this.next = next;
+    }
+
+    public void setPrevious(String previous) {
+        this.previous = previous;
+    }
+
+    public void setCourseInfoArrayList(ArrayList<CourseInfo> courseInfoArrayList) {
+        this.courseInfoArrayList = courseInfoArrayList;
+    }
 
     @Override
     public int describeContents() {
