@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,10 +40,14 @@ public class ExploreFragment extends Fragment {
 
     public static ArrayList<CourseInfo> courseInfoArrayList;
 
+    Fragment fragment;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_explore, container, false);
+
+        fragment = this;
 
         horizontalScrollView = view.findViewById(R.id.horizontalScrollViewExplore);
         horizontalScrollLL = view.findViewById(R.id.horizontalScrollLL);
@@ -102,6 +108,15 @@ public class ExploreFragment extends Fragment {
 
 //            horizontalScrollView.addView(cardElementView);
             horizontalScrollLL.addView(cardElementView);
+
+            cardElementView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    NavController navController = NavHostFragment.findNavController(fragment);
+                    navController.navigate(R.id.courseDetailFragment2);
+
+                }
+            });
 
         }
 

@@ -10,4 +10,9 @@
         android:name="com.example.funlearn.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/courseDetailFragment"
+        android:name="com.example.funlearn.CourseDetailFragment"
+        android:label="fragment_course_detail"
+        tools:layout="@layout/fragment_course_detail" />
 </navigation>
