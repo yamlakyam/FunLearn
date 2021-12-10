@@ -29,9 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HomeFragment extends Fragment {
 
     //    private static final String BASE_URL = "https://www.udemy.com/api-2.0/courses";
-    private static final String BASE_URL = "https://www.udemy.com/api-2.0/";
 
-    public static ArrayList<CourseInfo> courseInfoArrayList;
 
 
     @Override
@@ -39,36 +37,6 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        String username = "KWr09PPO6cuarAQ23r22fUCTMTJluKIpkheoN3eE";
-        String password = "55iS1BiEsxIfx3osg9MXlHhKW1AOhzWaXcNbAjzJDssqFtYQpYxAwZ4xvHqXZ94PgbdDVEjIsMXjL7NHh0y0pWdweTvTzE9UhkSA04nS4UCdsmiuSqDruR0ATUaKVI9J";
-
-        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new BasicAuthInterceptor(username, password)).build();
-
-//            retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).client(client).addConverterFactory(GsonConverterFactory.create()).build();
-
-        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
-
-        Call<AllUdemyData> call = apiInterface.getCourses();
-
-        call.enqueue(new Callback<AllUdemyData>() {
-            @Override
-            public void onResponse(Call<AllUdemyData> call, Response<AllUdemyData> response) {
-                Log.i("onResponse", response.body().getCourseInfoArrayList().toString());
-
-                courseInfoArrayList = new ArrayList<>();
-                courseInfoArrayList.addAll(response.body().getCourseInfoArrayList());
-
-                Log.i("All courses", courseInfoArrayList.get(0).getHeadline() + "");
-
-            }
-
-
-            @Override
-            public void onFailure(Call<AllUdemyData> call, Throwable t) {
-
-            }
-        });
 
         return view;
     }
