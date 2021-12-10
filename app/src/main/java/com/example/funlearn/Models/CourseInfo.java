@@ -1,17 +1,39 @@
 package com.example.funlearn.Models;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 public class CourseInfo {
+
+    @SerializedName("id")
     private int courseId;
+
+    @SerializedName("title")
     private String title;
+
+    @SerializedName("url")
     private String url;
+
+    @SerializedName("is_paid")
     private boolean isPaid;
+
+    @SerializedName("price")
     private String price;
+
+    @SerializedName("price_detail")
     private PriceDetail priceDetail;
+
+    @SerializedName("image_125_H")
     private String imageLink;
+
+    @SerializedName("published_title")
     private String publishedTitle;
+
+    @SerializedName("headline")
     private String headline;
+
+    @SerializedName("visible_instructors")
     private ArrayList<InstructorDetail> instructorDetailArrayList;
 
     public int getCourseId() {

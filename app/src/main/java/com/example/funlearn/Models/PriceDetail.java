@@ -1,8 +1,16 @@
 package com.example.funlearn.Models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class PriceDetail {
+
+    @SerializedName("amount")
     private double amount;
+
+    @SerializedName("currency")
     private String currency;
+
+    @SerializedName("price_string")
     private String price_string;
 
     public double getAmount() {

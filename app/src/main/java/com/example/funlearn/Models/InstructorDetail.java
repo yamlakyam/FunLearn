@@ -1,10 +1,22 @@
 package com.example.funlearn.Models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class InstructorDetail {
+
+    @SerializedName("title")
     private String title;
+
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("job_title")
     private String job_title;
+
+    @SerializedName("image_50x50")
     private String imageUrl;
+
+    @SerializedName("url")
     private String url;
 
     public String getTitle() {
