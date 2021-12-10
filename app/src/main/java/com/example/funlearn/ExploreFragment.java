@@ -114,6 +114,7 @@ public class ExploreFragment extends Fragment {
                 public void onClick(View v) {
                     NavController navController = NavHostFragment.findNavController(fragment);
                     navController.navigate(R.id.courseDetailFragment2);
+//                    NavHostFragment.findNavController(fragment).navigate(R.id.action_homeFragment_to_courseDetailFragment);
 
                 }
             });

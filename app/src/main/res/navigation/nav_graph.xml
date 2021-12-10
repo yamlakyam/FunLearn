@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="com.example.funlearn.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_courseDetailFragment"
+            app:destination="@id/courseDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/courseDetailFragment"
         android:name="com.example.funlearn.CourseDetailFragment"
