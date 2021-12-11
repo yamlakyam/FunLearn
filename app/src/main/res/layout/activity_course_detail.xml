@@ -42,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@+id/courseTitleDetail" />
 
     <TextView
-        android:id="@+id/startDetail"
+        android:id="@+id/starDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
@@ -57,7 +57,7 @@
         android:layout_height="20dp"
         android:layout_marginEnd="16dp"
         android:src="@drawable/star"
-        app:layout_constraintEnd_toStartOf="@+id/startDetail"
+        app:layout_constraintEnd_toStartOf="@+id/starDetail"
         app:layout_constraintTop_toTopOf="@+id/instructorDetail" />
 
     <ImageView

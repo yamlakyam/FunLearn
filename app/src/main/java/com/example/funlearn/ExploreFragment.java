@@ -1,6 +1,7 @@
 package com.example.funlearn;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -127,8 +128,16 @@ public class ExploreFragment extends Fragment {
 //                    NavHostFragment navHostFragment = (NavHostFragment) getParentFragmentManager().findFragmentById(R.id.fragment);
 //                    navHostFragment.getNavController().navigate(R.id.action_homeFragment_to_courseDetailFragment,bundle);
 
-                    NavController navController = NavHostFragment.findNavController(HomeFragment.homeFragment);
-                    navController.navigate(R.id.courseDetailFragment2,bundle);
+//                    NavController navController = NavHostFragment.findNavController(HomeFragment.homeFragment);
+//                    navController.navigate(R.id.courseDetailFragment2,bundle);
+
+                    Intent intent = new Intent(requireActivity(), CourseDetailActivity.class);
+                    intent.putExtra("imageLink", courseInfo.getImageLink());
+                    intent.putExtra("instructor", courseInfo.getInstructorDetailArrayList().get(0).getName());
+                    intent.putExtra("courseDetail", courseInfo.getHeadline());
+                    intent.putExtra("courseId", courseInfo.getCourseId());
+                    intent.putExtra("courseTitle", courseInfo.getTitle());
+                    startActivity(intent);
 
                 }
             });
