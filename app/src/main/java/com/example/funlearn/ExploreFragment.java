@@ -120,11 +120,15 @@ public class ExploreFragment extends Fragment {
                     bundle.putInt("courseId", courseInfo.getCourseId());
                     bundle.putString("courseTitle", courseInfo.getTitle());
 
+//
+//                    NavController navController = NavHostFragment.findNavController(fragment);
+//                    navController.navigate(R.id.courseDetailFragment2,bundle);
+//                    NavHostFragment.findNavController(fragment).navigate(R.id.action_homeFragment_to_courseDetailFragment,bundle);
+//                    NavHostFragment navHostFragment = (NavHostFragment) getParentFragmentManager().findFragmentById(R.id.fragment);
+//                    navHostFragment.getNavController().navigate(R.id.action_homeFragment_to_courseDetailFragment,bundle);
 
-                    NavController navController = NavHostFragment.findNavController(fragment);
+                    NavController navController = NavHostFragment.findNavController(HomeFragment.homeFragment);
                     navController.navigate(R.id.courseDetailFragment2,bundle);
-//                    NavHostFragment.findNavController(fragment).navigate(R.id.action_homeFragment_to_courseDetailFragment);
-
 
                 }
             });

@@ -34,11 +34,14 @@ public class HomeFragment extends Fragment {
 
     //    private static final String BASE_URL = "https://www.udemy.com/api-2.0/courses";
 
+    public static Fragment homeFragment;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        homeFragment=this;
 
         NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.fragment);
 
