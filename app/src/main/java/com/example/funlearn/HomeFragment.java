@@ -41,9 +41,8 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.fragment);
-//        view.findViewById(R.id.bottomNavigationView).setupWithNavController
-        NavigationUI.setupWithNavController((BottomNavigationView) view.findViewById(R.id.bottomNavigationView), navHostFragment.getNavController());
 
+        NavigationUI.setupWithNavController((BottomNavigationView) view.findViewById(R.id.bottomNavigationView), navHostFragment.getNavController());
 
         return view;
     }

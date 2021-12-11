@@ -112,9 +112,19 @@ public class ExploreFragment extends Fragment {
             cardElementView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("imageLink", courseInfo.getImageLink());
+                    bundle.putString("instructor", courseInfo.getInstructorDetailArrayList().get(0).getName());
+                    bundle.putString("courseDetail", courseInfo.getHeadline());
+                    bundle.putInt("courseId", courseInfo.getCourseId());
+                    bundle.putString("courseTitle", courseInfo.getTitle());
+
+
                     NavController navController = NavHostFragment.findNavController(fragment);
-                    navController.navigate(R.id.courseDetailFragment2);
+                    navController.navigate(R.id.courseDetailFragment2,bundle);
 //                    NavHostFragment.findNavController(fragment).navigate(R.id.action_homeFragment_to_courseDetailFragment);
+
 
                 }
             });
