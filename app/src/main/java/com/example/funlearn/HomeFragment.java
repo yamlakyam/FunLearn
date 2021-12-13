@@ -2,6 +2,7 @@ package com.example.funlearn;
 
 import android.os.Bundle;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
@@ -36,6 +37,8 @@ public class HomeFragment extends Fragment {
 
     public static Fragment homeFragment;
 
+    SearchView searchView;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,6 +49,30 @@ public class HomeFragment extends Fragment {
         NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.fragment);
 
         NavigationUI.setupWithNavController((BottomNavigationView) view.findViewById(R.id.bottomNavigationView), navHostFragment.getNavController());
+
+        searchView= view.findViewById(R.id.searchView);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+
+                for (int i = 0; i < ExploreFragment.courseInfoArrayList.size(); i++) {
+                    CourseInfo courseInfo = ExploreFragment.courseInfoArrayList.get(i);
+                    if(courseInfo.getTitle().contains(query)){
+                        Log.i("TAG", "Course Found ");
+                    }
+                }
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
 
         return view;
     }

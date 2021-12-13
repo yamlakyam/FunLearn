@@ -7,6 +7,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.funlearn.Models.AllUdemyData;
+import com.example.funlearn.Models.CourseReviews;
+import com.example.funlearn.Retrofit.ApiInterface;
+import com.example.funlearn.Retrofit.BasicAuthInterceptor;
+import com.example.funlearn.Util.Constants;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CourseDetailActivity extends AppCompatActivity {
 
@@ -31,9 +43,32 @@ public class CourseDetailActivity extends AppCompatActivity {
             courseDetail = getIntent().getStringExtra("courseDetail");
             courseId = getIntent().getIntExtra("courseId", 0);
             courseTitle = getIntent().getStringExtra("courseTitle");
-
             setValues();
+            getAllTheReviews();
+
         }
+    }
+
+    private void getAllTheReviews() {
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new BasicAuthInterceptor(Constants.username, Constants.password)).build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL).client(client).addConverterFactory(GsonConverterFactory.create()).build();
+
+        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+
+        Call<CourseReviews> call = apiInterface.getReviews(courseId);
+
+        call.enqueue(new Callback<CourseReviews>() {
+            @Override
+            public void onResponse(Call<CourseReviews> call, Response<CourseReviews> response) {
+                response.body().getReviewList();
+            }
+
+            @Override
+            public void onFailure(Call<CourseReviews> call, Throwable t) {
+
+            }
+        });
+
     }
 
     public void setValues() {

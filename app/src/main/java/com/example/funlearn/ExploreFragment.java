@@ -23,6 +23,7 @@ import com.example.funlearn.Models.AllUdemyData;
 import com.example.funlearn.Models.CourseInfo;
 import com.example.funlearn.Retrofit.ApiInterface;
 import com.example.funlearn.Retrofit.BasicAuthInterceptor;
+import com.example.funlearn.Util.Constants;
 
 import java.util.ArrayList;
 
@@ -37,7 +38,6 @@ public class ExploreFragment extends Fragment {
     HorizontalScrollView horizontalScrollView;
     LinearLayout horizontalScrollLL;
 
-    private static final String BASE_URL = "https://www.udemy.com/api-2.0/";
 
     public static ArrayList<CourseInfo> courseInfoArrayList;
 
@@ -59,7 +59,7 @@ public class ExploreFragment extends Fragment {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new BasicAuthInterceptor(username, password)).build();
 
 //            retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).client(client).addConverterFactory(GsonConverterFactory.create()).build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL).client(client).addConverterFactory(GsonConverterFactory.create()).build();
 
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
 

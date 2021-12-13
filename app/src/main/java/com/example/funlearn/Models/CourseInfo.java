@@ -24,7 +24,7 @@ public class CourseInfo {
     @SerializedName("price_detail")
     private PriceDetail priceDetail;
 
-    @SerializedName("image_125_H")
+    @SerializedName("image_480x270")
     private String imageLink;
 
     @SerializedName("published_title")
