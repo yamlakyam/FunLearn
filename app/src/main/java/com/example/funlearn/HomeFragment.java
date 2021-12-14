@@ -56,7 +56,6 @@ public class HomeFragment extends Fragment {
             @Override
             public boolean onQueryTextSubmit(String query) {
 
-
                 for (int i = 0; i < ExploreFragment.courseInfoArrayList.size(); i++) {
                     CourseInfo courseInfo = ExploreFragment.courseInfoArrayList.get(i);
                     if(courseInfo.getTitle().contains(query)){

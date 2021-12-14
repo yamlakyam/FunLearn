@@ -3,6 +3,7 @@ package com.example.funlearn;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,10 +24,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class CourseDetailActivity extends AppCompatActivity {
 
     ImageView courseImageView;
-    TextView courseTitleDetail, instructorDetail, DescriptionDetail;
+    TextView courseTitleDetail, instructorDetail, DescriptionDetail, starDetail;
 
     String imageLink, instructor, courseDetail, courseTitle;
     int courseId;
+
+    double x = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ public class CourseDetailActivity extends AppCompatActivity {
         courseTitleDetail = findViewById(R.id.courseTitleDetail);
         instructorDetail = findViewById(R.id.instructorDetail);
         DescriptionDetail = findViewById(R.id.DescriptionDetail);
+        starDetail = findViewById(R.id.starDetail);
 
         if (getIntent() != null) {
             imageLink = getIntent().getStringExtra("imageLink");
@@ -60,7 +64,19 @@ public class CourseDetailActivity extends AppCompatActivity {
         call.enqueue(new Callback<CourseReviews>() {
             @Override
             public void onResponse(Call<CourseReviews> call, Response<CourseReviews> response) {
-                response.body().getReviewList();
+                Log.i("TAG", response.body().getReviewList() + "");
+//            response.body().getReviewList();
+
+
+                for (int i = 0; i < response.body().getReviewList().size(); i++) {
+
+                    x = x + response.body().getReviewList().get(i).getRating();
+                }
+                x = x / response.body().getReviewList().size();
+
+                Log.i("avg", x + "");
+                starDetail.setText(String.valueOf(x));
+
             }
 
             @Override

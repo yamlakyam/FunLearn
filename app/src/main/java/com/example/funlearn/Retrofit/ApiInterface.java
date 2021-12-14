@@ -19,7 +19,7 @@ public interface ApiInterface {
     @GET("courses")
     Call<AllUdemyData> getCourses();
 
-    @GET("courses/{course_id}/reviews")
+    @GET("courses/{id}/reviews")
     Call<CourseReviews> getReviews(@Path("id") int id);
 
 //    public void getAllUdemyData(Callback<List<CourseInfo>> callback);
