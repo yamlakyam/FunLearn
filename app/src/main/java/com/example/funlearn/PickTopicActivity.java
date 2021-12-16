@@ -128,6 +128,14 @@ public class PickTopicActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences prefs = getSharedPreferences("FAVORITE_LIST", Context.MODE_PRIVATE);
+//        prefs.getStringSet("favorite_set",null);
+        Log.i("string-set on resume", prefs.getStringSet("favorite_set", null) + "");
+    }
+
     public void selectionToggle(boolean favItemClick, MaterialCardView favItemCard, String favorite) {
 
         if (favItemClick) {
@@ -148,8 +156,8 @@ public class PickTopicActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
 
         Set<String> set = new HashSet<>();
         set.addAll(favoriteList);
@@ -161,13 +169,4 @@ public class PickTopicActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        SharedPreferences prefs = getSharedPreferences("FAVORITE_LIST", Context.MODE_PRIVATE);
-//        prefs.getStringSet("favorite_set",null);
-        Log.i("string-set", prefs.getStringSet("favorite_set", null) + "");
-
-
-    }
 }

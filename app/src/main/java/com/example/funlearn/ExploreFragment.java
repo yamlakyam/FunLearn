@@ -2,6 +2,7 @@ package com.example.funlearn;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -26,6 +27,7 @@ import com.example.funlearn.Retrofit.BasicAuthInterceptor;
 import com.example.funlearn.Util.Constants;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -37,6 +39,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ExploreFragment extends Fragment {
     HorizontalScrollView horizontalScrollView;
     LinearLayout horizontalScrollLL;
+    LinearLayout firstHorizontalLL;
 
 
     public static ArrayList<CourseInfo> courseInfoArrayList;
@@ -52,6 +55,7 @@ public class ExploreFragment extends Fragment {
 
         horizontalScrollView = view.findViewById(R.id.horizontalScrollViewExplore);
         horizontalScrollLL = view.findViewById(R.id.horizontalScrollLL);
+        firstHorizontalLL = view.findViewById(R.id.firstHorizontalLL);
 
         String username = "KWr09PPO6cuarAQ23r22fUCTMTJluKIpkheoN3eE";
         String password = "55iS1BiEsxIfx3osg9MXlHhKW1AOhzWaXcNbAjzJDssqFtYQpYxAwZ4xvHqXZ94PgbdDVEjIsMXjL7NHh0y0pWdweTvTzE9UhkSA04nS4UCdsmiuSqDruR0ATUaKVI9J";
@@ -68,21 +72,19 @@ public class ExploreFragment extends Fragment {
         call.enqueue(new Callback<AllUdemyData>() {
             @Override
             public void onResponse(Call<AllUdemyData> call, Response<AllUdemyData> response) {
-//                Log.i("onResponse", response.body().getCourseInfoArrayList().toString());
 
                 courseInfoArrayList = new ArrayList<>();
                 courseInfoArrayList.addAll(response.body().getCourseInfoArrayList());
-
                 Log.i("All courses", courseInfoArrayList.get(0).getHeadline() + "");
-
                 drawCourseCards();
             }
 
             @Override
             public void onFailure(Call<AllUdemyData> call, Throwable t) {
-
             }
         });
+
+        addFavoritePicks();
 
         return view;
     }
@@ -140,6 +142,91 @@ public class ExploreFragment extends Fragment {
 
                 }
             });
+
+        }
+
+    }
+
+    private void addFavoritePicks() {
+        SharedPreferences prefs = requireActivity().getSharedPreferences("FAVORITE_LIST", Context.MODE_PRIVATE);
+        Set<String> favoritePickSet = prefs.getStringSet("favorite_set", null);
+
+        Log.i("TAG", favoritePickSet.toString());
+
+        ArrayList<String> favoritePickList = new ArrayList<>(favoritePickSet);
+
+        firstHorizontalLL.removeAllViews();
+        for (int i = 0; i < favoritePickList.size(); i++) {
+
+            LayoutInflater courseCardInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View favoritePick = courseCardInflater.inflate(R.layout.category_layout, null, false);
+            ImageView favPickImg = favoritePick.findViewById(R.id.picksImage);
+            TextView favPickTxt = favoritePick.findViewById(R.id.picksTitle);
+
+            String fav = favoritePickList.get(i);
+
+
+            switch (fav) {
+                case "art":
+                    favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.artist));
+                    favPickTxt.setText("Art");
+                    firstHorizontalLL.addView(favoritePick);
+                    break;
+                case "coding":
+                    favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.desktop));
+                    favPickTxt.setText("Coding");
+                    firstHorizontalLL.addView(favoritePick);
+                    break;
+                case "business":
+                    favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.briefcase));
+                    favPickTxt.setText("Business");
+                    firstHorizontalLL.addView(favoritePick);
+                    break;
+
+                case "culinary":
+                    favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.noodles));
+                    favPickTxt.setText("Culinary");
+                    firstHorizontalLL.addView(favoritePick);
+                    break;
+
+                case "sport":
+                    favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.football));
+                    favPickTxt.setText("Sport");
+                    firstHorizontalLL.addView(favoritePick);
+                    break;
+
+                case "music":
+                    favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.musical));
+                    favPickTxt.setText("Music");
+                    firstHorizontalLL.addView(favoritePick);
+                    break;
+
+                case "marketing":
+                    favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.advertising));
+                    favPickTxt.setText("Marketing");
+                    firstHorizontalLL.addView(favoritePick);
+                    break;
+
+                case "design":
+                    favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.measuring));
+                    favPickTxt.setText("Design");
+                    firstHorizontalLL.addView(favoritePick);
+                    break;
+
+                case "gaming":
+                    favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.gamepad));
+                    favPickTxt.setText("Gaming");
+                    firstHorizontalLL.addView(favoritePick);
+                    break;
+
+
+
+                default:
+                    Log.i("DONOTHING", "addFavoritePicks: ");
+
+
+            }
+
 
         }
 
