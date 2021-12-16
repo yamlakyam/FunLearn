@@ -49,9 +49,16 @@ public class PickTopicActivity extends AppCompatActivity {
         artCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                artCard.setStrokeColor(Color.parseColor("#00a9b6"));
-                artCard.setStrokeWidth(10);
-                artCard.setCardElevation(2f);
+
+                artClicked = !artClicked;
+
+                if (artClicked) {
+                    artCard.setStrokeColor(Color.parseColor("#00a9b6"));
+                    artCard.setStrokeWidth(10);
+                    artCard.setCardElevation(2f);
+                } else {
+                    artCard.setStrokeWidth(0);
+                }
 
             }
         });
@@ -59,28 +66,45 @@ public class PickTopicActivity extends AppCompatActivity {
         businessCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                businessCard.setStrokeColor(Color.parseColor("#00a9b6"));
-                businessCard.setStrokeWidth(10);
-                businessCard.setCardElevation(2f);
+                businessClicked = !businessClicked;
+                if (businessClicked) {
+                    businessCard.setStrokeColor(Color.parseColor("#00a9b6"));
+                    businessCard.setStrokeWidth(10);
+                    businessCard.setCardElevation(2f);
+                } else {
+                    businessCard.setStrokeWidth(0);
+
+                }
+
 
             }
         });
         culinaryCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                culinaryCard.setStrokeColor(Color.parseColor("#00a9b6"));
-                culinaryCard.setStrokeWidth(10);
-                culinaryCard.setCardElevation(2f);
-
+                culinaryClicked = !culinaryClicked;
+                if (culinaryClicked) {
+                    culinaryCard.setStrokeColor(Color.parseColor("#00a9b6"));
+                    culinaryCard.setStrokeWidth(10);
+                    culinaryCard.setCardElevation(2f);
+                } else {
+                    culinaryCard.setStrokeWidth(0);
+                }
             }
         });
 
         sportCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sportCard.setStrokeColor(Color.parseColor("#00a9b6"));
-                sportCard.setStrokeWidth(10);
-                sportCard.setCardElevation(2f);
+                sportClicked = !sportClicked;
+                if (sportClicked) {
+                    sportCard.setStrokeColor(Color.parseColor("#00a9b6"));
+                    sportCard.setStrokeWidth(10);
+                    sportCard.setCardElevation(2f);
+                } else {
+                    sportCard.setStrokeWidth(0);
+
+                }
 
             }
         });
@@ -88,9 +112,15 @@ public class PickTopicActivity extends AppCompatActivity {
         musicCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                musicCard.setStrokeColor(Color.parseColor("#00a9b6"));
-                musicCard.setStrokeWidth(10);
-                musicCard.setCardElevation(2f);
+                musicClicked = !musicClicked;
+                if (musicClicked) {
+                    musicCard.setStrokeColor(Color.parseColor("#00a9b6"));
+                    musicCard.setStrokeWidth(10);
+                    musicCard.setCardElevation(2f);
+                } else {
+                    musicCard.setStrokeWidth(0);
+
+                }
 
             }
         });
@@ -98,19 +128,31 @@ public class PickTopicActivity extends AppCompatActivity {
         marketingCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                marketingCard.setStrokeColor(Color.parseColor("#00a9b6"));
-                marketingCard.setStrokeWidth(10);
-                marketingCard.setCardElevation(2f);
-
+                marketingClicked = !marketingClicked;
+                if (marketingClicked) {
+                    marketingCard.setStrokeColor(Color.parseColor("#00a9b6"));
+                    marketingCard.setStrokeWidth(10);
+                    marketingCard.setCardElevation(2f);
+                } else {
+                    marketingCard.setStrokeWidth(0);
+                }
             }
         });
 
         designCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                designCard.setStrokeColor(Color.parseColor("#00a9b6"));
-                designCard.setStrokeWidth(10);
-                designCard.setCardElevation(2f);
+                designClicked = !designClicked;
+
+                if (designClicked) {
+                    designCard.setStrokeColor(Color.parseColor("#00a9b6"));
+                    designCard.setStrokeWidth(10);
+                    designCard.setCardElevation(2f);
+                } else {
+                    designCard.setStrokeWidth(0);
+
+                }
+
 
             }
         });
@@ -118,9 +160,16 @@ public class PickTopicActivity extends AppCompatActivity {
         gamingCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gamingCard.setStrokeColor(Color.parseColor("#00a9b6"));
-                gamingCard.setStrokeWidth(10);
-                gamingCard.setCardElevation(2f);
+                gamingClicked = !gamingClicked;
+                if (gamingClicked) {
+                    gamingCard.setStrokeColor(Color.parseColor("#00a9b6"));
+                    gamingCard.setStrokeWidth(10);
+                    gamingCard.setCardElevation(2f);
+                } else {
+                    gamingCard.setStrokeWidth(0);
+
+                }
+
 
             }
         });
