@@ -68,7 +68,7 @@ public class ExploreFragment extends Fragment {
         call.enqueue(new Callback<AllUdemyData>() {
             @Override
             public void onResponse(Call<AllUdemyData> call, Response<AllUdemyData> response) {
-                Log.i("onResponse", response.body().getCourseInfoArrayList().toString());
+//                Log.i("onResponse", response.body().getCourseInfoArrayList().toString());
 
                 courseInfoArrayList = new ArrayList<>();
                 courseInfoArrayList.addAll(response.body().getCourseInfoArrayList());

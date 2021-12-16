@@ -2,7 +2,9 @@ package com.example.funlearn;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +14,8 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class PickTopicActivity extends AppCompatActivity {
 
@@ -47,7 +51,7 @@ public class PickTopicActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 codingClicked = !codingClicked;
-                selectionToggle(codingClicked, codingCard);
+                selectionToggle(codingClicked, codingCard,"coding");
             }
         });
 
@@ -55,7 +59,7 @@ public class PickTopicActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 artClicked = !artClicked;
-                selectionToggle(artClicked, artCard);
+                selectionToggle(artClicked, artCard,"art");
             }
         });
 
@@ -63,14 +67,14 @@ public class PickTopicActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 businessClicked = !businessClicked;
-                selectionToggle(businessClicked, businessCard);
+                selectionToggle(businessClicked, businessCard, "business");
             }
         });
         culinaryCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 culinaryClicked = !culinaryClicked;
-                selectionToggle(culinaryClicked, culinaryCard);
+                selectionToggle(culinaryClicked, culinaryCard,"culinary");
             }
         });
 
@@ -78,7 +82,7 @@ public class PickTopicActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sportClicked = !sportClicked;
-                selectionToggle(sportClicked, sportCard);
+                selectionToggle(sportClicked, sportCard,"sport");
             }
         });
 
@@ -86,7 +90,7 @@ public class PickTopicActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 musicClicked = !musicClicked;
-                selectionToggle(musicClicked, musicCard);
+                selectionToggle(musicClicked, musicCard,"music");
             }
         });
 
@@ -94,7 +98,7 @@ public class PickTopicActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 marketingClicked = !marketingClicked;
-                selectionToggle(marketingClicked, marketingCard);
+                selectionToggle(marketingClicked, marketingCard,"marketing");
             }
         });
 
@@ -102,7 +106,7 @@ public class PickTopicActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 designClicked = !designClicked;
-                selectionToggle(designClicked, designCard);
+                selectionToggle(designClicked, designCard,"design");
 
             }
         });
@@ -111,7 +115,7 @@ public class PickTopicActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 gamingClicked = !gamingClicked;
-                selectionToggle(gamingClicked, gamingCard);
+                selectionToggle(gamingClicked, gamingCard,"gaming");
 
             }
         });
@@ -124,11 +128,11 @@ public class PickTopicActivity extends AppCompatActivity {
         });
     }
 
-    public void selectionToggle(boolean favItemClick, MaterialCardView favItemCard) {
+    public void selectionToggle(boolean favItemClick, MaterialCardView favItemCard, String favorite) {
 
         if (favItemClick) {
             Log.i("click", "selectionToggle: ");
-            favoriteList.add("gaming");
+            favoriteList.add(favorite);
             favItemCard.setStrokeColor(Color.parseColor("#00a9b6"));
             favItemCard.setStrokeWidth(10);
             favItemCard.setCardElevation(2f);
@@ -136,11 +140,34 @@ public class PickTopicActivity extends AppCompatActivity {
             Log.i("unclick", "selectionToggle: ");
             favItemCard.setStrokeWidth(0);
 
-            if (favoriteList.contains("gaming")) {
-                favoriteList.remove("gaming");
+            if (favoriteList.contains(favorite)) {
+                favoriteList.remove(favorite);
             }
 
         }
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        Set<String> set = new HashSet<>();
+        set.addAll(favoriteList);
+
+        SharedPreferences prefs = getSharedPreferences("FAVORITE_LIST", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putStringSet("favorite_set", set);
+        editor.commit();
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SharedPreferences prefs = getSharedPreferences("FAVORITE_LIST", Context.MODE_PRIVATE);
+//        prefs.getStringSet("favorite_set",null);
+        Log.i("string-set", prefs.getStringSet("favorite_set", null) + "");
+
+
+    }
 }
