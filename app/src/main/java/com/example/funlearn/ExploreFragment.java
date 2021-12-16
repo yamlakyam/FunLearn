@@ -84,7 +84,6 @@ public class ExploreFragment extends Fragment {
             }
         });
 
-
         return view;
     }
 
