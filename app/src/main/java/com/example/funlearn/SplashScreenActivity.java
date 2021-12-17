@@ -34,6 +34,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void run() {
                 startActivity(new Intent(SplashScreenActivity.this, PickTopicActivity.class));
+                finish();
             }
         }, 3000);
 
