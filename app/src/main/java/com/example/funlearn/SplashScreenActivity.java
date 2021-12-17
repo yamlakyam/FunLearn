@@ -3,7 +3,9 @@ package com.example.funlearn;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.CycleInterpolator;
@@ -25,6 +27,15 @@ public class SplashScreenActivity extends AppCompatActivity {
         anim.setDuration(2000);
         anim.setInterpolator(new AccelerateInterpolator());
         anim.start();
+
+        Handler handler = new Handler();
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(new Intent(SplashScreenActivity.this, PickTopicActivity.class));
+            }
+        }, 3000);
 
     }
 }
