@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fafafa"
     tools:context=".CourseDetailActivity">
 
     <ImageView
@@ -110,12 +111,17 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <LinearLayout
-                android:id="@+id/instructorListLayout"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
-                android:orientation="vertical"></LinearLayout>
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/instructorListLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"></LinearLayout>
+            </ScrollView>
 
         </LinearLayout>
 

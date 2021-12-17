@@ -127,7 +127,11 @@ public class CourseDetailActivity extends AppCompatActivity {
                     instructorName.setText(instructorDetailAtI.getName());
                     instructorJob.setText(instructorDetailAtI.getJob_title());
 
+                    View view = new View(getApplicationContext());
+                    view.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 10));
+
                     instructorListLayout.addView(instructorLayout);
+                    instructorListLayout.addView(view);
 
                 }
             }

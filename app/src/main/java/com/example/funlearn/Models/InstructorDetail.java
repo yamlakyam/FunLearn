@@ -13,7 +13,7 @@ public class InstructorDetail {
     @SerializedName("job_title")
     private String job_title;
 
-    @SerializedName("image_50x50")
+    @SerializedName("image_100x100")
     private String imageUrl;
 
     @SerializedName("url")
