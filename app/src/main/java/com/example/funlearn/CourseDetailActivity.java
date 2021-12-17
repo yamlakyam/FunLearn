@@ -3,6 +3,7 @@ package com.example.funlearn;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,7 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.funlearn.Models.AllUdemyData;
 import com.example.funlearn.Models.CourseInfo;
 import com.example.funlearn.Models.CourseReviews;
 import com.example.funlearn.Models.InstructorDetail;
@@ -60,7 +60,7 @@ public class CourseDetailActivity extends AppCompatActivity {
             courseTitle = getIntent().getStringExtra("courseTitle");
             setValues();
             getAllTheReviews();
-            getCourseDetail();
+            getInstructorDetail();
 
         }
     }
@@ -99,7 +99,7 @@ public class CourseDetailActivity extends AppCompatActivity {
 
     }
 
-    private void getCourseDetail() {
+    private void getInstructorDetail() {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new BasicAuthInterceptor(Constants.username, Constants.password)).build();
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL).client(client).addConverterFactory(GsonConverterFactory.create()).build();
 
@@ -132,6 +132,15 @@ public class CourseDetailActivity extends AppCompatActivity {
 
                     instructorListLayout.addView(instructorLayout);
                     instructorListLayout.addView(view);
+
+                    instructorLayout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(CourseDetailActivity.this, InstructorDetailActivity.class);
+                            intent.putExtra("InstructorURL", instructorDetailAtI.getUrl());
+                            startActivity(intent);
+                        }
+                    });
 
                 }
             }

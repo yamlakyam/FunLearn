@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FunLearn">
         <activity
+            android:name=".InstructorDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".CourseDetailActivity"
             android:exported="false" />
         <activity

@@ -16,14 +16,15 @@ public interface ApiInterface {
 
     //    @GET("https://www.udemy.com/api-2.0/courses/")
 
-    @GET("courses")
+    @GET("/api-2.0/courses")
     Call<AllUdemyData> getCourses();
 
-    @GET("courses/{id}/reviews")
+    @GET("/api-2.0/courses/{id}/reviews")
     Call<CourseReviews> getReviews(@Path("id") int id);
 
-    @GET("courses/{id}")
+    @GET("/api-2.0/courses/{id}")
     Call<CourseInfo> getCourseDetail(@Path("id") int id);
+
 
 //    public void getAllUdemyData(Callback<List<CourseInfo>> callback);
 }
