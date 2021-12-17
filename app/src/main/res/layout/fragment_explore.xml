@@ -171,7 +171,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:gravity="center_vertical"
-                android:text="TextView"
+                android:text="Coding"
                 android:textColor="#00a9b6" />
         </androidx.cardview.widget.CardView>
 

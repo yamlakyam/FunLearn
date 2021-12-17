@@ -3,8 +3,10 @@ package com.example.funlearn;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -25,6 +27,7 @@ import com.example.funlearn.Models.CourseInfo;
 import com.example.funlearn.Retrofit.ApiInterface;
 import com.example.funlearn.Retrofit.BasicAuthInterceptor;
 import com.example.funlearn.Util.Constants;
+import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -41,10 +44,11 @@ public class ExploreFragment extends Fragment {
     LinearLayout horizontalScrollLL;
     LinearLayout firstHorizontalLL;
 
-
     public static ArrayList<CourseInfo> courseInfoArrayList;
 
     Fragment fragment;
+
+    ArrayList<Integer> wishList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,6 +56,8 @@ public class ExploreFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_explore, container, false);
 
         fragment = this;
+
+        wishList = new ArrayList<>();
 
         horizontalScrollView = view.findViewById(R.id.horizontalScrollViewExplore);
         horizontalScrollLL = view.findViewById(R.id.horizontalScrollLL);
@@ -100,17 +106,26 @@ public class ExploreFragment extends Fragment {
             TextView instructorNameTxt = cardElementView.findViewById(R.id.instructorNameTxt);
             TextView priceTxt = cardElementView.findViewById(R.id.priceTxt);
             TextView ratingTxt = cardElementView.findViewById(R.id.ratingTxt);
+            MaterialCardView wishCourse = cardElementView.findViewById(R.id.wishCourseCard);
             ImageView courseImage = cardElementView.findViewById(R.id.courseImage);
             courseTitleTxt.setText(courseInfo.getTitle());
             instructorNameTxt.setText(courseInfo.getInstructorDetailArrayList().get(0).getName());
             priceTxt.setText(courseInfo.getPrice());
 //            ratingTxt.setText(String.valueOf(courseInfo.));
-
             Glide.with(getContext()).load(courseInfo.getImageLink()).into(courseImage);
-
 //            horizontalScrollView.addView(cardElementView);
-            horizontalScrollLL.addView(cardElementView);
+            wishCourse.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    wishCourse.setStrokeWidth(10);
+                    wishCourse.setCardElevation(2f);
+                    wishCourse.setStrokeColor(Color.parseColor("#00a9b6"));
+                    wishList.add(courseInfo.getCourseId());
 
+                }
+            });
+
+            horizontalScrollLL.addView(cardElementView);
             cardElementView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -121,14 +136,7 @@ public class ExploreFragment extends Fragment {
                     bundle.putString("courseDetail", courseInfo.getHeadline());
                     bundle.putInt("courseId", courseInfo.getCourseId());
                     bundle.putString("courseTitle", courseInfo.getTitle());
-//
-//                    NavController navController = NavHostFragment.findNavController(fragment);
-//                    navController.navigate(R.id.courseDetailFragment2,bundle);
-//                    NavHostFragment.findNavController(fragment).navigate(R.id.action_homeFragment_to_courseDetailFragment,bundle);
-//                    NavHostFragment navHostFragment = (NavHostFragment) getParentFragmentManager().findFragmentById(R.id.fragment);
-//                    navHostFragment.getNavController().navigate(R.id.action_homeFragment_to_courseDetailFragment,bundle);
-//                    NavController navController = NavHostFragment.findNavController(HomeFragment.homeFragment);
-//                    navController.navigate(R.id.courseDetailFragment2,bundle);
+
                     Intent intent = new Intent(requireActivity(), CourseDetailActivity.class);
                     intent.putExtra("imageLink", courseInfo.getImageLink());
                     intent.putExtra("instructor", courseInfo.getInstructorDetailArrayList().get(0).getName());
@@ -157,7 +165,7 @@ public class ExploreFragment extends Fragment {
             ImageView favPickImg = favoritePick.findViewById(R.id.picksImage);
             TextView favPickTxt = favoritePick.findViewById(R.id.picksTitle);
 
-            View view= new View(requireContext());
+            View view = new View(requireContext());
             view.setLayoutParams(new LinearLayout.LayoutParams(10, LinearLayout.LayoutParams.MATCH_PARENT));
 
             String fav = favoritePickList.get(i);
@@ -244,5 +252,10 @@ public class ExploreFragment extends Fragment {
 
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.i("courses on wishlist", wishList.toString());
+    }
 }
 

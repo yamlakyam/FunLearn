@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FunLearn">
         <activity
+            android:name=".PickTopicActivity"
+            android:exported="false" />
+        <activity
             android:name=".InstructorDetailActivity"
             android:exported="false" />
         <activity
@@ -24,7 +27,7 @@
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".PickTopicActivity"
+            android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
