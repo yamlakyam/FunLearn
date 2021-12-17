@@ -121,17 +121,14 @@ public class ExploreFragment extends Fragment {
                     bundle.putString("courseDetail", courseInfo.getHeadline());
                     bundle.putInt("courseId", courseInfo.getCourseId());
                     bundle.putString("courseTitle", courseInfo.getTitle());
-
 //
 //                    NavController navController = NavHostFragment.findNavController(fragment);
 //                    navController.navigate(R.id.courseDetailFragment2,bundle);
 //                    NavHostFragment.findNavController(fragment).navigate(R.id.action_homeFragment_to_courseDetailFragment,bundle);
 //                    NavHostFragment navHostFragment = (NavHostFragment) getParentFragmentManager().findFragmentById(R.id.fragment);
 //                    navHostFragment.getNavController().navigate(R.id.action_homeFragment_to_courseDetailFragment,bundle);
-
 //                    NavController navController = NavHostFragment.findNavController(HomeFragment.homeFragment);
 //                    navController.navigate(R.id.courseDetailFragment2,bundle);
-
                     Intent intent = new Intent(requireActivity(), CourseDetailActivity.class);
                     intent.putExtra("imageLink", courseInfo.getImageLink());
                     intent.putExtra("instructor", courseInfo.getInstructorDetailArrayList().get(0).getName());
@@ -139,12 +136,9 @@ public class ExploreFragment extends Fragment {
                     intent.putExtra("courseId", courseInfo.getCourseId());
                     intent.putExtra("courseTitle", courseInfo.getTitle());
                     startActivity(intent);
-
                 }
             });
-
         }
-
     }
 
     private void addFavoritePicks() {
@@ -163,6 +157,9 @@ public class ExploreFragment extends Fragment {
             ImageView favPickImg = favoritePick.findViewById(R.id.picksImage);
             TextView favPickTxt = favoritePick.findViewById(R.id.picksTitle);
 
+            View view= new View(requireContext());
+            view.setLayoutParams(new LinearLayout.LayoutParams(10, LinearLayout.LayoutParams.MATCH_PARENT));
+
             String fav = favoritePickList.get(i);
 
 
@@ -171,55 +168,70 @@ public class ExploreFragment extends Fragment {
                     favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.artist));
                     favPickTxt.setText("Art");
                     firstHorizontalLL.addView(favoritePick);
+                    firstHorizontalLL.addView(view);
                     break;
                 case "coding":
                     favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.desktop));
                     favPickTxt.setText("Coding");
                     firstHorizontalLL.addView(favoritePick);
+                    firstHorizontalLL.addView(view);
+
                     break;
                 case "business":
                     favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.briefcase));
                     favPickTxt.setText("Business");
                     firstHorizontalLL.addView(favoritePick);
+                    firstHorizontalLL.addView(view);
+
                     break;
 
                 case "culinary":
                     favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.noodles));
                     favPickTxt.setText("Culinary");
                     firstHorizontalLL.addView(favoritePick);
+                    firstHorizontalLL.addView(view);
+
                     break;
 
                 case "sport":
                     favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.football));
                     favPickTxt.setText("Sport");
                     firstHorizontalLL.addView(favoritePick);
+                    firstHorizontalLL.addView(view);
+
                     break;
 
                 case "music":
                     favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.musical));
                     favPickTxt.setText("Music");
                     firstHorizontalLL.addView(favoritePick);
+                    firstHorizontalLL.addView(view);
+
                     break;
 
                 case "marketing":
                     favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.advertising));
                     favPickTxt.setText("Marketing");
                     firstHorizontalLL.addView(favoritePick);
+                    firstHorizontalLL.addView(view);
+
                     break;
 
                 case "design":
                     favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.measuring));
                     favPickTxt.setText("Design");
                     firstHorizontalLL.addView(favoritePick);
+                    firstHorizontalLL.addView(view);
+
                     break;
 
                 case "gaming":
                     favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.gamepad));
                     favPickTxt.setText("Gaming");
                     firstHorizontalLL.addView(favoritePick);
+                    firstHorizontalLL.addView(view);
+
                     break;
-
-
 
                 default:
                     Log.i("DONOTHING", "addFavoritePicks: ");
