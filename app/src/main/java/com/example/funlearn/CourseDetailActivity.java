@@ -2,17 +2,25 @@ package com.example.funlearn;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.funlearn.Models.AllUdemyData;
+import com.example.funlearn.Models.CourseInfo;
 import com.example.funlearn.Models.CourseReviews;
+import com.example.funlearn.Models.InstructorDetail;
 import com.example.funlearn.Retrofit.ApiInterface;
 import com.example.funlearn.Retrofit.BasicAuthInterceptor;
 import com.example.funlearn.Util.Constants;
+
+import java.util.ArrayList;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -24,7 +32,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class CourseDetailActivity extends AppCompatActivity {
 
     ImageView courseImageView;
-    TextView courseTitleDetail, instructorDetail, DescriptionDetail, starDetail;
+    TextView courseTitleDetail, instructorDetail, DescriptionDetail, starDetail, coursePriceTxt;
+    LinearLayout instructorListLayout;
 
     String imageLink, instructor, courseDetail, courseTitle;
     int courseId;
@@ -40,6 +49,8 @@ public class CourseDetailActivity extends AppCompatActivity {
         instructorDetail = findViewById(R.id.instructorDetail);
         DescriptionDetail = findViewById(R.id.DescriptionDetail);
         starDetail = findViewById(R.id.starDetail);
+        instructorListLayout = findViewById(R.id.instructorListLayout);
+        coursePriceTxt = findViewById(R.id.coursePriceTxt);
 
         if (getIntent() != null) {
             imageLink = getIntent().getStringExtra("imageLink");
@@ -49,6 +60,7 @@ public class CourseDetailActivity extends AppCompatActivity {
             courseTitle = getIntent().getStringExtra("courseTitle");
             setValues();
             getAllTheReviews();
+            getCourseDetail();
 
         }
     }
@@ -85,6 +97,46 @@ public class CourseDetailActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void getCourseDetail() {
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new BasicAuthInterceptor(Constants.username, Constants.password)).build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL).client(client).addConverterFactory(GsonConverterFactory.create()).build();
+
+        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+        Call<CourseInfo> call = apiInterface.getCourseDetail(courseId);
+        call.enqueue(new Callback<CourseInfo>() {
+            @Override
+            public void onResponse(Call<CourseInfo> call, Response<CourseInfo> response) {
+                CourseInfo courseInfoResponse = response.body();
+
+                coursePriceTxt.setText(String.valueOf(courseInfoResponse.getPrice()));
+                ArrayList<InstructorDetail> instructorDetailArrayList = courseInfoResponse.getInstructorDetailArrayList();
+
+                for (int i = 0; i < instructorDetailArrayList.size(); i++) {
+
+                    InstructorDetail instructorDetailAtI = instructorDetailArrayList.get(i);
+
+                    LayoutInflater instructorCardInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    View instructorLayout = instructorCardInflater.inflate(R.layout.instructor_layout, null, false);
+                    ImageView instructorImage = instructorLayout.findViewById(R.id.instructorImage);
+                    TextView instructorName = instructorLayout.findViewById(R.id.instructorName);
+                    TextView instructorJob = instructorLayout.findViewById(R.id.instructorJob);
+
+                    Glide.with(getApplicationContext()).load(instructorDetailAtI.getImageUrl()).into(instructorImage);
+                    instructorName.setText(instructorDetailAtI.getName());
+                    instructorJob.setText(instructorDetailAtI.getJob_title());
+
+                    instructorListLayout.addView(instructorLayout);
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CourseInfo> call, Throwable t) {
+
+            }
+        });
     }
 
     public void setValues() {
