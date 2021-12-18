@@ -10,7 +10,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.funlearn.Models.AllUdemyData;
 import com.example.funlearn.Models.CourseInfo;
 import com.example.funlearn.Retrofit.ApiInterface;
@@ -32,12 +36,15 @@ public class CoursesFragment extends Fragment {
 
     ArrayList<String> categoriesOnTheAPI;
     HashMap<String, String> categoriesMap;
+    LinearLayout favoriteCourseLayout;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_courses, container, false);
+
+        favoriteCourseLayout = view.findViewById(R.id.favoriteCourseLayout);
 
         categoriesOnTheAPI = new ArrayList<>();
         getFavoriteCategoryList();
@@ -107,6 +114,15 @@ public class CoursesFragment extends Fragment {
             @Override
             public void onResponse(Call<AllUdemyData> call, Response<AllUdemyData> response) {
                 Log.i("Filterd-Courses", response.body().getCourseInfoArrayList().toString());
+
+                ArrayList<CourseInfo> courseInfoArrayList = response.body().getCourseInfoArrayList();
+
+                for (int i = 0; i < courseInfoArrayList.size(); i++) {
+                    CourseInfo courseInfo = courseInfoArrayList.get(i);
+                    Log.i("Course info at " + i, courseInfo + "");
+                    drawCourseCards(courseInfo);
+                }
+
             }
 
             @Override
@@ -114,5 +130,19 @@ public class CoursesFragment extends Fragment {
 
             }
         });
+    }
+
+    public void drawCourseCards(CourseInfo courseInfo) {
+        LayoutInflater favCourseCardInflator = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View favCourseLayout = favCourseCardInflator.inflate(R.layout.my_course_layout, null, false);
+        ImageView courseImage = favCourseLayout.findViewById(R.id.coursePicture);
+        TextView courseTitle = favCourseLayout.findViewById(R.id.courseTitle);
+        TextView instructorsName = favCourseLayout.findViewById(R.id.instructorsName);
+        TextView coursePrice = favCourseLayout.findViewById(R.id.coursePrice);
+        Glide.with(getContext()).load(courseInfo.getImageLink()).into(courseImage);
+        courseTitle.setText(courseInfo.getTitle());
+        instructorsName.setText(courseInfo.getInstructorDetailArrayList().get(0).getName());
+        coursePrice.setText(courseInfo.getPrice());
+        favoriteCourseLayout.addView(favCourseLayout);
     }
 }
