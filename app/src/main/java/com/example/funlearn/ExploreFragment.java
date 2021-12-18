@@ -147,6 +147,7 @@ public class ExploreFragment extends Fragment {
                         intent.putExtra("courseDetail", courseInfo.getHeadline());
                         intent.putExtra("courseId", courseInfo.getCourseId());
                         intent.putExtra("courseTitle", courseInfo.getTitle());
+                        intent.putExtra("courseUrl", courseInfo.getUrl());
                         startActivity(intent);
                     }
                 });

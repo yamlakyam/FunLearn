@@ -35,7 +35,7 @@ public class CourseDetailActivity extends AppCompatActivity {
     TextView courseTitleDetail, instructorDetail, DescriptionDetail, starDetail, coursePriceTxt;
     LinearLayout instructorListLayout;
 
-    String imageLink, instructor, courseDetail, courseTitle;
+    String imageLink, instructor, courseDetail, courseTitle, courseUrl;
     int courseId;
 
     double x = 0;
@@ -58,6 +58,9 @@ public class CourseDetailActivity extends AppCompatActivity {
             courseDetail = getIntent().getStringExtra("courseDetail");
             courseId = getIntent().getIntExtra("courseId", 0);
             courseTitle = getIntent().getStringExtra("courseTitle");
+            courseUrl = getIntent().getStringExtra("courseUrl");
+
+
             setValues();
             getAllTheReviews();
             getInstructorDetail();
@@ -143,6 +146,8 @@ public class CourseDetailActivity extends AppCompatActivity {
                     });
 
                 }
+
+
             }
 
             @Override
@@ -157,6 +162,15 @@ public class CourseDetailActivity extends AppCompatActivity {
         courseTitleDetail.setText(courseTitle);
         instructorDetail.setText(instructor);
         DescriptionDetail.setText(courseDetail);
+
+        courseTitleDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CourseDetailActivity.this, CourseStartActivity.class);
+                intent.putExtra("Course-Url", courseUrl);
+                startActivity(intent);
+            }
+        });
 
     }
 }
