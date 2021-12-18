@@ -16,7 +16,7 @@ public interface ApiInterface {
 
     //    @GET("https://www.udemy.com/api-2.0/courses/")
 
-    @GET("/api-2.0/courses")
+    @GET("/api-2.0/courses/?page_size=100")
     Call<AllUdemyData> getCourses();
 
     @GET("/api-2.0/courses/{id}/reviews")
