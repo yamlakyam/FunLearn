@@ -52,6 +52,9 @@ An android project for GADS 2021 program. An application for taking courses onli
 ![image](https://user-images.githubusercontent.com/60112251/146539618-0af74dcd-e812-4205-9b5a-f068c7e4b10a.png)
 
 ![image](https://user-images.githubusercontent.com/60112251/146539714-81c6b0dc-e278-415f-879a-6c2d8440fb05.png)
+
+![image](https://user-images.githubusercontent.com/60112251/146635965-f2864f20-49d7-4a28-b6b7-d62c73272779.png)
+
 ![Logo-Transparent](https://user-images.githubusercontent.com/60112251/146541646-272f3c2d-6ebe-4957-a4fb-1de704b1bf19.png)
 
 
