@@ -3,11 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#e9f2f3"
     tools:context=".CoursesFragment">
 
     <LinearLayout
         android:id="@+id/favoriteCourseLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#e9f2f3"
         android:orientation="vertical" />
 </ScrollView>

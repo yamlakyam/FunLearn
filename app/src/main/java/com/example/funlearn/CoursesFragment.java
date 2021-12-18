@@ -1,6 +1,7 @@
 package com.example.funlearn;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -142,6 +143,36 @@ public class CoursesFragment extends Fragment {
         courseTitle.setText(courseInfo.getTitle());
         instructorsName.setText(courseInfo.getInstructorDetailArrayList().get(0).getName());
         coursePrice.setText(courseInfo.getPrice());
+
+        View view = new View(getContext());
+        view.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 10));
+
         favoriteCourseLayout.addView(favCourseLayout);
+        favoriteCourseLayout.addView(view);
+
+        favCourseLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToDetails(courseInfo);
+            }
+        });
+
+    }
+
+    public void navigateToDetails(CourseInfo courseInfo) {
+        Bundle bundle = new Bundle();
+        bundle.putString("imageLink", courseInfo.getImageLink());
+        bundle.putString("instructor", courseInfo.getInstructorDetailArrayList().get(0).getName());
+        bundle.putString("courseDetail", courseInfo.getHeadline());
+        bundle.putInt("courseId", courseInfo.getCourseId());
+        bundle.putString("courseTitle", courseInfo.getTitle());
+
+        Intent intent = new Intent(requireActivity(), CourseDetailActivity.class);
+        intent.putExtra("imageLink", courseInfo.getImageLink());
+        intent.putExtra("instructor", courseInfo.getInstructorDetailArrayList().get(0).getName());
+        intent.putExtra("courseDetail", courseInfo.getHeadline());
+        intent.putExtra("courseId", courseInfo.getCourseId());
+        intent.putExtra("courseTitle", courseInfo.getTitle());
+        startActivity(intent);
     }
 }
