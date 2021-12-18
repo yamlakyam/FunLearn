@@ -99,53 +99,56 @@ public class ExploreFragment extends Fragment {
         for (int i = 0; i < courseInfoArrayList.size(); i++) {
             CourseInfo courseInfo = courseInfoArrayList.get(i);
 
-            LayoutInflater courseCardInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View cardElementView = courseCardInflater.inflate(R.layout.course_layout, null, false);
+            if(getContext()!=null){
+                LayoutInflater courseCardInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View cardElementView = courseCardInflater.inflate(R.layout.course_layout, null, false);
 
-            TextView courseTitleTxt = cardElementView.findViewById(R.id.courseTitleTxt);
-            TextView instructorNameTxt = cardElementView.findViewById(R.id.instructorNameTxt);
-            TextView priceTxt = cardElementView.findViewById(R.id.priceTxt);
-            TextView ratingTxt = cardElementView.findViewById(R.id.ratingTxt);
-            MaterialCardView wishCourse = cardElementView.findViewById(R.id.wishCourseCard);
-            ImageView courseImage = cardElementView.findViewById(R.id.courseImage);
-            courseTitleTxt.setText(courseInfo.getTitle());
-            instructorNameTxt.setText(courseInfo.getInstructorDetailArrayList().get(0).getName());
-            priceTxt.setText(courseInfo.getPrice());
+                TextView courseTitleTxt = cardElementView.findViewById(R.id.courseTitleTxt);
+                TextView instructorNameTxt = cardElementView.findViewById(R.id.instructorNameTxt);
+                TextView priceTxt = cardElementView.findViewById(R.id.priceTxt);
+                TextView ratingTxt = cardElementView.findViewById(R.id.ratingTxt);
+                MaterialCardView wishCourse = cardElementView.findViewById(R.id.wishCourseCard);
+                ImageView courseImage = cardElementView.findViewById(R.id.courseImage);
+                courseTitleTxt.setText(courseInfo.getTitle());
+                instructorNameTxt.setText(courseInfo.getInstructorDetailArrayList().get(0).getName());
+                priceTxt.setText(courseInfo.getPrice());
 //            ratingTxt.setText(String.valueOf(courseInfo.));
-            Glide.with(getContext()).load(courseInfo.getImageLink()).into(courseImage);
+                Glide.with(getContext()).load(courseInfo.getImageLink()).into(courseImage);
 //            horizontalScrollView.addView(cardElementView);
-            wishCourse.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    wishCourse.setStrokeWidth(10);
-                    wishCourse.setCardElevation(2f);
-                    wishCourse.setStrokeColor(Color.parseColor("#00a9b6"));
-                    wishList.add(courseInfo.getCourseId());
+                wishCourse.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        wishCourse.setStrokeWidth(10);
+                        wishCourse.setCardElevation(2f);
+                        wishCourse.setStrokeColor(Color.parseColor("#00a9b6"));
+                        wishList.add(courseInfo.getCourseId());
 
-                }
-            });
+                    }
+                });
 
-            horizontalScrollLL.addView(cardElementView);
-            cardElementView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+                horizontalScrollLL.addView(cardElementView);
+                cardElementView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
-                    Bundle bundle = new Bundle();
-                    bundle.putString("imageLink", courseInfo.getImageLink());
-                    bundle.putString("instructor", courseInfo.getInstructorDetailArrayList().get(0).getName());
-                    bundle.putString("courseDetail", courseInfo.getHeadline());
-                    bundle.putInt("courseId", courseInfo.getCourseId());
-                    bundle.putString("courseTitle", courseInfo.getTitle());
+                        Bundle bundle = new Bundle();
+                        bundle.putString("imageLink", courseInfo.getImageLink());
+                        bundle.putString("instructor", courseInfo.getInstructorDetailArrayList().get(0).getName());
+                        bundle.putString("courseDetail", courseInfo.getHeadline());
+                        bundle.putInt("courseId", courseInfo.getCourseId());
+                        bundle.putString("courseTitle", courseInfo.getTitle());
 
-                    Intent intent = new Intent(requireActivity(), CourseDetailActivity.class);
-                    intent.putExtra("imageLink", courseInfo.getImageLink());
-                    intent.putExtra("instructor", courseInfo.getInstructorDetailArrayList().get(0).getName());
-                    intent.putExtra("courseDetail", courseInfo.getHeadline());
-                    intent.putExtra("courseId", courseInfo.getCourseId());
-                    intent.putExtra("courseTitle", courseInfo.getTitle());
-                    startActivity(intent);
-                }
-            });
+                        Intent intent = new Intent(requireActivity(), CourseDetailActivity.class);
+                        intent.putExtra("imageLink", courseInfo.getImageLink());
+                        intent.putExtra("instructor", courseInfo.getInstructorDetailArrayList().get(0).getName());
+                        intent.putExtra("courseDetail", courseInfo.getHeadline());
+                        intent.putExtra("courseId", courseInfo.getCourseId());
+                        intent.putExtra("courseTitle", courseInfo.getTitle());
+                        startActivity(intent);
+                    }
+                });
+            }
+
         }
     }
 
