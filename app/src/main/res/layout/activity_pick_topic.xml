@@ -69,7 +69,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/artist" />
+            app:srcCompat="@drawable/finance" />
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
@@ -105,7 +105,7 @@
             android:layout_width="46dp"
             android:layout_height="58dp"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/noodles" />
+            app:srcCompat="@drawable/lifestyle" />
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
@@ -123,7 +123,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/football" />
+            app:srcCompat="@drawable/healthcare" />
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
@@ -195,7 +195,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/gamepad" />
+            app:srcCompat="@drawable/goal" />
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
@@ -232,7 +232,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Art"
+        android:text="Finance"
         android:textColor="#B8B1B0"
         app:layout_constraintEnd_toEndOf="@+id/artCard"
         app:layout_constraintStart_toStartOf="@+id/artCard"
@@ -254,7 +254,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Culinary"
+        android:text="Lifestyle"
         android:textColor="#B8B1B0"
         app:layout_constraintEnd_toEndOf="@+id/culinaryCard"
         app:layout_constraintStart_toStartOf="@+id/culinaryCard"
@@ -265,7 +265,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="Coding"
+        android:text="Development"
         android:textColor="#B8B1B0"
         app:layout_constraintEnd_toEndOf="@+id/codingCard"
         app:layout_constraintStart_toStartOf="@+id/codingCard"
@@ -287,7 +287,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Gaming"
+        android:text="Personal Devt"
         android:textColor="#B8B1B0"
         app:layout_constraintEnd_toEndOf="@+id/gamingCard"
         app:layout_constraintStart_toStartOf="@+id/gamingCard"
@@ -320,7 +320,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Sport"
+        android:text="Health &amp; Fitness "
         android:textColor="#B8B1B0"
         app:layout_constraintEnd_toEndOf="@+id/sportCard"
         app:layout_constraintStart_toStartOf="@+id/sportCard"

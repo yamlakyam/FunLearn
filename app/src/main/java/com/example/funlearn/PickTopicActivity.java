@@ -19,13 +19,13 @@ import java.util.Set;
 
 public class PickTopicActivity extends AppCompatActivity {
 
-    MaterialCardView codingCard, artCard, businessCard, culinaryCard, sportCard;
-    MaterialCardView musicCard, marketingCard, designCard, gamingCard;
+    MaterialCardView codingCard, financeCard, businessCard, lifestyleCard, healthCard;
+    MaterialCardView musicCard, marketingCard, designCard, personalDevCard;
     MaterialButton startJourneyBtn;
 
 
-    boolean codingClicked, artClicked, businessClicked, culinaryClicked, sportClicked,
-            musicClicked, marketingClicked, designClicked, gamingClicked = false;
+    boolean codingClicked, financeClicked, businessClicked,lifestyleClicked, healthClicked,
+            musicClicked, marketingClicked, designClicked, personalDevClicked = false;
 
     ArrayList<String> favoriteList;
 
@@ -37,14 +37,14 @@ public class PickTopicActivity extends AppCompatActivity {
         favoriteList = new ArrayList<>();
 
         codingCard = findViewById(R.id.codingCard);
-        artCard = findViewById(R.id.artCard);
+        financeCard = findViewById(R.id.artCard);
         businessCard = findViewById(R.id.businessCard);
-        culinaryCard = findViewById(R.id.culinaryCard);
-        sportCard = findViewById(R.id.sportCard);
+        lifestyleCard = findViewById(R.id.culinaryCard);
+        healthCard = findViewById(R.id.sportCard);
         musicCard = findViewById(R.id.musicCard);
         marketingCard = findViewById(R.id.marketingCard);
         designCard = findViewById(R.id.designCard);
-        gamingCard = findViewById(R.id.gamingCard);
+        personalDevCard = findViewById(R.id.gamingCard);
         startJourneyBtn = findViewById(R.id.startJourneyBtn);
 
         codingCard.setOnClickListener(new View.OnClickListener() {
@@ -55,11 +55,11 @@ public class PickTopicActivity extends AppCompatActivity {
             }
         });
 
-        artCard.setOnClickListener(new View.OnClickListener() {
+        financeCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                artClicked = !artClicked;
-                selectionToggle(artClicked, artCard,"art");
+                financeClicked = !financeClicked;
+                selectionToggle(financeClicked, financeCard,"finance");
             }
         });
 
@@ -70,19 +70,19 @@ public class PickTopicActivity extends AppCompatActivity {
                 selectionToggle(businessClicked, businessCard, "business");
             }
         });
-        culinaryCard.setOnClickListener(new View.OnClickListener() {
+        lifestyleCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                culinaryClicked = !culinaryClicked;
-                selectionToggle(culinaryClicked, culinaryCard,"culinary");
+                lifestyleClicked = !lifestyleClicked;
+                selectionToggle(lifestyleClicked, lifestyleCard,"lifestyle");
             }
         });
 
-        sportCard.setOnClickListener(new View.OnClickListener() {
+        healthCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sportClicked = !sportClicked;
-                selectionToggle(sportClicked, sportCard,"sport");
+                healthClicked = !healthClicked;
+                selectionToggle(healthClicked, healthCard,"health");
             }
         });
 
@@ -111,11 +111,11 @@ public class PickTopicActivity extends AppCompatActivity {
             }
         });
 
-        gamingCard.setOnClickListener(new View.OnClickListener() {
+        personalDevCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gamingClicked = !gamingClicked;
-                selectionToggle(gamingClicked, gamingCard,"gaming");
+                personalDevClicked = !personalDevClicked;
+                selectionToggle(personalDevClicked, personalDevCard,"personalDev");
 
             }
         });

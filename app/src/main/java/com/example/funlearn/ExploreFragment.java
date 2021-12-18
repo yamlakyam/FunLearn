@@ -172,9 +172,9 @@ public class ExploreFragment extends Fragment {
 
 
             switch (fav) {
-                case "art":
-                    favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.artist));
-                    favPickTxt.setText("Art");
+                case "finance":
+                    favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.finance));
+                    favPickTxt.setText("Finance");
                     firstHorizontalLL.addView(favoritePick);
                     firstHorizontalLL.addView(view);
                     break;
@@ -193,17 +193,17 @@ public class ExploreFragment extends Fragment {
 
                     break;
 
-                case "culinary":
-                    favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.noodles));
-                    favPickTxt.setText("Culinary");
+                case "lifestyle":
+                    favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.lifestyle));
+                    favPickTxt.setText("LifeStyle");
                     firstHorizontalLL.addView(favoritePick);
                     firstHorizontalLL.addView(view);
 
                     break;
 
-                case "sport":
-                    favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.football));
-                    favPickTxt.setText("Sport");
+                case "health":
+                    favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.healthcare));
+                    favPickTxt.setText("Health");
                     firstHorizontalLL.addView(favoritePick);
                     firstHorizontalLL.addView(view);
 
@@ -233,9 +233,9 @@ public class ExploreFragment extends Fragment {
 
                     break;
 
-                case "gaming":
-                    favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.gamepad));
-                    favPickTxt.setText("Gaming");
+                case "personalDev":
+                    favPickImg.setImageDrawable(getResources().getDrawable(R.drawable.goal));
+                    favPickTxt.setText("Personal Devt");
                     firstHorizontalLL.addView(favoritePick);
                     firstHorizontalLL.addView(view);
 
