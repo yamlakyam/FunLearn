@@ -58,6 +58,6 @@ An android project for GADS 2021 program. An application for taking courses onli
 ![Logo-Transparent](https://user-images.githubusercontent.com/60112251/146541646-272f3c2d-6ebe-4957-a4fb-1de704b1bf19.png)
 
 
-## 🛠 Skills
-Android, Java, Retrofit...
+## 🛠 Skills & Tools
+Android, Java, Retrofit, Glide...
 

@@ -48,7 +48,6 @@ public class ExploreFragment extends Fragment {
 
     Fragment fragment;
 
-    ArrayList<Integer> wishList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,8 +55,6 @@ public class ExploreFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_explore, container, false);
 
         fragment = this;
-
-        wishList = new ArrayList<>();
 
         horizontalScrollView = view.findViewById(R.id.horizontalScrollViewExplore);
         horizontalScrollLL = view.findViewById(R.id.horizontalScrollLL);
@@ -99,7 +96,7 @@ public class ExploreFragment extends Fragment {
         for (int i = 0; i < courseInfoArrayList.size(); i++) {
             CourseInfo courseInfo = courseInfoArrayList.get(i);
 
-            if(getContext()!=null){
+            if (getContext() != null) {
                 LayoutInflater courseCardInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View cardElementView = courseCardInflater.inflate(R.layout.course_layout, null, false);
 
@@ -114,14 +111,20 @@ public class ExploreFragment extends Fragment {
                 priceTxt.setText(courseInfo.getPrice());
 //            ratingTxt.setText(String.valueOf(courseInfo.));
                 Glide.with(getContext()).load(courseInfo.getImageLink()).into(courseImage);
+                if (Constants.wishList.contains(courseInfo.getCourseId())) {
+                    wishCourse.setStrokeWidth(10);
+                    wishCourse.setCardElevation(2f);
+                    wishCourse.setStrokeColor(Color.parseColor("#ff6765"));
+                }
+
 //            horizontalScrollView.addView(cardElementView);
                 wishCourse.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         wishCourse.setStrokeWidth(10);
                         wishCourse.setCardElevation(2f);
-                        wishCourse.setStrokeColor(Color.parseColor("#00a9b6"));
-                        wishList.add(courseInfo.getCourseId());
+                        wishCourse.setStrokeColor(Color.parseColor("#ff6765"));
+                        Constants.wishList.add(courseInfo.getCourseId());
 
                     }
                 });
@@ -172,7 +175,6 @@ public class ExploreFragment extends Fragment {
             view.setLayoutParams(new LinearLayout.LayoutParams(10, LinearLayout.LayoutParams.MATCH_PARENT));
 
             String fav = favoritePickList.get(i);
-
 
             switch (fav) {
                 case "finance":
@@ -250,7 +252,6 @@ public class ExploreFragment extends Fragment {
 
             }
 
-
         }
 
     }
@@ -258,7 +259,7 @@ public class ExploreFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        Log.i("courses on wishlist", wishList.toString());
+        Log.i("courses on wishlist", Constants.wishList.toString());
     }
 }
 
