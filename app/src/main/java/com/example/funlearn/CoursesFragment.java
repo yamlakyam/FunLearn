@@ -122,7 +122,6 @@ public class CoursesFragment extends Fragment {
                     Log.i("Course info at " + i, courseInfo + "");
                     drawCourseCards(courseInfo);
                 }
-
             }
 
             @Override
